@@ -1,0 +1,14 @@
+.popup__error {
+  visibility: hidden;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  border: 0;
+  outline: none;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  color: red;
+}

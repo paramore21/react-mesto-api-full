@@ -1,0 +1,13 @@
+.avatar__edit {
+  margin: 20px 0;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

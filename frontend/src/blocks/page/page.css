@@ -1,0 +1,22 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  background-color: #000000;
+  color: white;
+  max-width: 1280px;
+  min-width: 320px;
+  font-family: 'Inter';
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media screen and (max-width: 768px) {
+  .page {
+    margin: 0 auto;
+  }
+}

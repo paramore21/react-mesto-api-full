@@ -1,0 +1,16 @@
+.login__enter{
+  margin-top: 12px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  border: none;
+  outline: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: transparent;
+  color: #CCCCCC;
+  text-decoration: none;
+  text-align: center;
+}

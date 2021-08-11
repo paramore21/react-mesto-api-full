@@ -1,0 +1,45 @@
+.login__input {
+  margin: 0;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  border: 0;
+  border-bottom: 2px solid #CCCCCC;
+  outline: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: #000000;
+  color: #CCCCCC;
+}
+
+.login__input::placeholder {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  outline: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #CCCCCC;
+}
+
+.login__input:first-of-type {
+  padding: 55px 0 13px 0;
+}
+
+.login__input:last-of-type{
+  padding: 30px 0 13px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .login__input:first-of-type {
+  padding: 0 0 10px 0;
+}
+
+.login__input:last-of-type{
+  padding: 30px 0 8px 0;
+}
+}

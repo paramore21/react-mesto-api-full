@@ -1,0 +1,13 @@
+.header__button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+  text-decoration: none;
+}

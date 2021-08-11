@@ -1,0 +1,27 @@
+.popup__close-form {
+  width: 40px;
+  height: 40px;
+  background-image: url("../../../images/Close_Icon.svg");
+  background-size: 100%;
+  position: absolute;
+  top: -40px;
+  right: -15px;
+  overflow: visible;
+  background-color: #ffffff00;
+  border: none;
+  box-shadow: 0;
+  outline: none;
+}
+
+@media screen and (min-width: 768px) {
+  .popup__close-form {
+    top: -25px;
+    right: -35px;
+  }
+}
+
+.popup__close-form:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}

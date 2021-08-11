@@ -1,0 +1,19 @@
+.image__container {
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin: auto;
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .image__container{
+    padding: 36px;
+  }
+}

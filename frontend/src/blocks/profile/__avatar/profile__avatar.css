@@ -1,0 +1,37 @@
+.profile__avatar {
+  max-width: 120px;
+  max-height: 120px;
+  border-radius: 50%;
+  margin: 0 auto;
+  background-image: url("../../../images/avatar.png");
+  background-size: cover;
+  object-fit: contain;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .profile__avatar {
+    margin: 0;
+  }
+}
+
+
+.profile__avatar::before {
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+.profile__avatar:hover::before {
+  background: rgba(0, 0, 0);
+  background-image: url("../../../images/Edit_Pencil.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.8;
+  transition: opacity 0.8s ease-out;
+}
