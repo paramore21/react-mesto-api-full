@@ -26,7 +26,7 @@ const allowedCors = [
   'https://paramore2101.nomoredomains.club',
   'http://api.paramore2101.nomoredomains.club',
   'https://api.paramore2101.nomoredomains.club',
-  'https://localhost:3000'
+  'http://localhost:3000'
 ];
 
 app.use(function(req, res, next) {
