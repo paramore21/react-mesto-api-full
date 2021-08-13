@@ -1,4 +1,4 @@
-const baseUrl = 'https://auth.nomoreparties.co'
+const baseUrl = 'https://api.paramore2101.nomoredomains.club'
 
 export const register = (email, password) => {
   return fetch(`${baseUrl}/signup`, {
