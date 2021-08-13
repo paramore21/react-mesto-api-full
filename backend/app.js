@@ -26,7 +26,7 @@ const allowedCors = [
   'https://paramore2101.nomoredomains.club',
   'http://api.paramore2101.nomoredomains.club',
   'https://api.paramore2101.nomoredomains.club',
-  'localhost:3000'
+  'https://localhost:3000'
 ];
 
 app.use(function(req, res, next) {
@@ -34,14 +34,17 @@ app.use(function(req, res, next) {
   const { method } = req;
   const DEFAULT_ALLOWED_METHODS = "GET,HEAD,PUT,PATCH,POST,DELETE";
   const requestHeaders = req.headers['access-control-request-headers'];
+
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
   }
+
   if (method === 'OPTIONS') {
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Headers', requestHeaders);
     return res.end();
   }
+
   next();
 });
 
