@@ -22,7 +22,10 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 });
 
 const allowedCors = [
-  'paramore2101.nomoredomains.club',
+  'http://paramore2101.nomoredomains.club',
+  'https://paramore2101.nomoredomains.club',
+  'http://api.paramore2101.nomoredomains.club',
+  'https://api.paramore2101.nomoredomains.club',
   'localhost:3000'
 ];
 
