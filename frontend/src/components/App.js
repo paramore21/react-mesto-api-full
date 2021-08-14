@@ -48,27 +48,27 @@ function App() {
   }
   
   function handleLogout () {
+    setLoggedIn(false);
     localStorage.removeItem('token');
     setCurrentEmail('');
-    setLoggedIn(false);
     history.push('/sign-in');
   }
+ 
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    auth.checkToken(token)
+    .then(res => {
+      if(res){
+        setCurrentUser(res)
+        setLoggedIn(true)
+        history.push('/')
+      }
+    })
+  }, [loggedIn])
 
   useEffect(() => {
     const token = localStorage.getItem('token')
-    if(token) {
-      api.getUserInformation()
-      .then((data) => {
-        setCurrentUser(data)
-      })
-      .catch((err) => {console.log(err)})
-    }
-
-  }, [])
-
-  useEffect(() => {
-    const token = localStorage.getItem('token')
-    if(token) {
+    if(token && loggedIn) {
       api.getInitialCards()
       .then((data) => {
         setCards(data.data)
@@ -76,7 +76,7 @@ function App() {
       .catch((err) => {console.log(err)})
     }
 
-  }, [])
+  }, [loggedIn])
 
   function handleEditAvatarClick(){
     setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen)
@@ -142,7 +142,7 @@ function App() {
 
   function handleAddPlaceSubmit({place, link}) {
     return api.addNewCardToServer(place, link).then((res) => {
-      setCards([res, cards]);
+      setCards([res.data, ...cards]);
       closeAllPopups()
     })
     .catch(err => console.log(err)) 
