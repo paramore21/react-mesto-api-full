@@ -105,6 +105,10 @@ function App() {
   const handleCardDelete = (id) => {
     return api.deleteCard(id)
     .then(() => {
+      const anotherCards = cards.forEach(card => {
+        console.log("handle delete", card._id, id)
+      });
+      console.log(anotherCards)
       const newCards = cards.filter(card => card._id !== id)
       setCards(newCards)
     })
@@ -114,7 +118,7 @@ function App() {
   function handleCardLike(card, isLiked) { 
     const {_id} = card
     api.changeLikeStatus(_id, isLiked).then((newCard) => { 
-      setCards((state) => state.map((c) => c._id === _id ? newCard : c)); 
+      setCards((state) => state.map((c) => c._id === _id ? newCard.data : c)); 
     }) 
     .catch(err => console.log(err)); 
   } 
