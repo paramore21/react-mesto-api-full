@@ -40,6 +40,7 @@ function App() {
   function handleLogin({email, password}){
     auth.login(email, password).then((res) => {
       localStorage.setItem('token', `${res.token}`)
+      console.log(email)
       setCurrentEmail(email)
       setLoggedIn(true)
       history.push("/")
