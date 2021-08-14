@@ -23,7 +23,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardDelet
           <button type="button" className="profile__add-card" onClick={onAddPlace}></button>
         </section>
         <section className="elements">
-          {cards.map((card, _id) => (
+          {cards.map((card) => (
             <Card
               card={card}
               link={card.link}

@@ -62,7 +62,7 @@ class Api {
   }
 
   changeLikeStatus(cardId, isLiked) {
-    return fetch(`${this._url}/cards/likes/${cardId}`,{
+    return fetch(`${this._url}/cards/${cardId}/likes`,{
       method: isLiked ? 'PUT' : 'DELETE',
       headers: this._headers
     })
@@ -76,17 +76,13 @@ class Api {
     })
     .then(this._checkResponse);
   }
-
-  getAppInfo() {
-    return Promise.all([this.getInitialCards(), this.getUserInformation()]);
-  }
 }
 
 
 const api = new Api({
   baseUrl: 'https://api.paramore2101.nomoredomains.club',
   headers: {
-    authorization: '5cec2cfc-4275-45ab-817c-d3d0a479cabd',
+    authorization: `Bearer ${localStorage.getItem('token')}`,
     'Content-Type': 'application/json'
   }
 });

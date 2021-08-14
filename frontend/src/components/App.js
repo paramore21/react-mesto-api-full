@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import { Route, Switch, Redirect, withRouter, useHistory } from 'react-router-dom';
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import * as auth from "../utils/auth"
 import Main from "./Main"
 import Footer from './Footer'
@@ -25,6 +25,58 @@ function App() {
   const [infoTooltipState, setInfoTooltipState] = useState({opened: false, sucess: false})
   const [loggedIn, setLoggedIn] = useState(false)
   const history = useHistory()
+  
+  function handleRegister({email, password}){
+    auth.register(email, password).then(() => {
+      setInfoTooltipState({ opened: true, success: true })
+      history.push("/login")
+    })  
+    .catch(err => {
+      console.log(err)
+      setInfoTooltipState({ opened: true, success: false })
+    })
+  }
+  
+  function handleLogin({email, password}){
+    auth.login(email, password).then((res) => {
+      localStorage.setItem('token', `${res.token}`)
+      setCurrentEmail(email)
+      setLoggedIn(true)
+      history.push("/")
+    })
+    .catch(err => console.log(err))
+  }
+  
+  function handleLogout () {
+    localStorage.removeItem('token');
+    setCurrentEmail('');
+    setLoggedIn(false);
+    history.push('/sign-in');
+  }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if(token) {
+      api.getUserInformation()
+      .then((data) => {
+        setCurrentUser(data)
+      })
+      .catch((err) => {console.log(err)})
+    }
+
+  }, [])
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if(token) {
+      api.getInitialCards()
+      .then((data) => {
+        setCards(data.data)
+      })
+      .catch((err) => {console.log(err)})
+    }
+
+  }, [])
 
   function handleEditAvatarClick(){
     setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen)
@@ -85,61 +137,12 @@ function App() {
 
   function handleAddPlaceSubmit({place, link}) {
     return api.addNewCardToServer(place, link).then((res) => {
-      setCards([res, ...cards]);
+      setCards([res, cards]);
       closeAllPopups()
     })
     .catch(err => console.log(err)) 
   }
 
-  function handleRegister({email, password}){
-    auth.register(email, password).then(() => {
-      setInfoTooltipState({ opened: true, success: true })
-      history.push("/login")
-    })  
-    .catch(err => {
-      console.log(err)
-      setInfoTooltipState({ opened: true, success: false })
-    })
-  }
-
-  function handleLogin({email, password}){
-    auth.login(email, password).then((res) => {
-      localStorage.setItem('token', `${res.token}`)
-      setCurrentEmail(email)
-      setLoggedIn(true)
-      history.push("/")
-    })
-    .catch(err => console.log(err))
-  }
-
-  function handleLogout () {
-    localStorage.removeItem('token');
-    setCurrentEmail('');
-    setLoggedIn(false);
-    history.push('/sign-in');
-  }
-
-  useEffect(() => {
-    const token = localStorage.getItem('token')
-    if(token) {
-      auth.checkToken(token)
-      .then(result => {
-        if (result) {
-          setCurrentEmail(result.data.email);
-          setLoggedIn(true);
-          history.push('/');
-        }
-      })
-      .catch(err => console.log(err))
-    }
-
-    api.getAppInfo()
-    .then(([cardData, userData]) => {
-      setCurrentUser(userData);
-      setCards(cardData);
-    })
-    .catch(err => console.log(err))
-  }, [])
   
 
   return (
