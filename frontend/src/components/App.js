@@ -125,15 +125,16 @@ function App() {
 
   function handleUpdateUser({name, about}) {
     return api.updateUserInformation(name, about).then((res) => {
-      setCurrentUser(res)
+      setCurrentUser(res.data)
       closeAllPopups()
     })
     .catch(err => console.log(err))
   }
 
   function handleUpdateAvatar(avatar) {
+    console.log(avatar)
     return api.updateUserAvatar(avatar).then((res) => {
-      setCurrentUser(res)
+      setCurrentUser(res.data)
       closeAllPopups()
     })
     .catch(err => console.log(err))
